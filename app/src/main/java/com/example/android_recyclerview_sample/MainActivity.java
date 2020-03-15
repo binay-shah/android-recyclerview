@@ -33,11 +33,9 @@ public class MainActivity extends AppCompatActivity {
         sandwichList = new ArrayList<Sandwich>();
 
         for (String item: sandwiches){
-            try {
+
                 sandwichList.add(JsonUtils.parseSandwichJson(item));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
         }
 
         Log.d("debug-list", "" + sandwichList.size());
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO (07) Create a new SandwichAdapter variable,
         // and bind it to the RecyclerView’s Adapter.
 
-        adapter = new SandwichAdapter();
+        adapter = new SandwichAdapter(this);
         recyclerView.setAdapter(adapter);
 
         adapter.setData(sandwichList);
